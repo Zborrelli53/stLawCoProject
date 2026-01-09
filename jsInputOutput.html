@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Input Demo</title>
+    
+    <style>
+        /* Basic styling for the page */
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        /* Form styling */
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Output display styling */
+        #output {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #e8f5e9;
+            border-left: 4px solid #4CAF50;
+            border-radius: 4px;
+            display: none; /* Hidden by default */
+        }
+
+        #output h2 {
+            margin-top: 0;
+            color: #2e7d32;
+        }
+
+        #output p {
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .label {
+            font-weight: bold;
+            color: #555;
+        }
+    </style>
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 User Input Demo</h1>
+        <p style="text-align: center; color: #666;">Fill out the form below and see your information displayed!</p>
+
+        <!-- Input Form -->
+        <form id="userForm">
+            <div class="input-group">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" placeholder="Enter your name" required>
+            </div>
+
+            <div class="input-group">
+                <label for="age">Your Age:</label>
+                <input type="number" id="age" placeholder="Enter your age" required>
+            </div>
+
+            <div class="input-group">
+                <label for="hometown">Your Hometown:</label>
+                <input type="text" id="hometown" placeholder="e.g., Canton, Potsdam, Massena" required>
+            </div>
+
+            <div class="input-group">
+                <label for="hobby">Favorite Hobby:</label>
+                <input type="text" id="hobby" placeholder="Enter your favorite hobby" required>
+            </div>
+
+            <div class="input-group">
+                <label for="message">Tell us something interesting:</label>
+                <textarea id="message" rows="4" placeholder="Share something about yourself..." required></textarea>
+            </div>
+
+            <button type="submit">Display My Information</button>
+        </form>
+
+        <!-- Output Display Area (Hidden by default) -->
+        <div id="output">
+            <h2>📋 Your Information:</h2>
+            <p><span class="label">Name:</span> <span id="displayName"></span></p>
+            <p><span class="label">Age:</span> <span id="displayAge"></span></p>
+            <p><span class="label">Hometown:</span> <span id="displayHometown"></span></p>
+            <p><span class="label">Favorite Hobby:</span> <span id="displayHobby"></span></p>
+            <p><span class="label">Message:</span> <span id="displayMessage"></span></p>
+        </div>
+    </div>
+
+    <script>
+        // Get references to the form and output divs
+        const form = document.getElementById('userForm');
+        const outputDiv = document.getElementById('output');
+
+        // Add event listener for form submission
+        form.addEventListener('submit', function(event){
+            // Prevent the form from actually submitting (which would refresh the page)
+            event.preventDefault();
+
+            //Get the values from each input field
+            let nameValue = document.getElementById('name').value;
+            let ageValue = document.getElementById('age').value;
+            let hometownValue = document.getElementById('hometown').value;
+            let hobbyValue = document.getElementById('hobby').value;
+            let messageValue = document.getElementById('message').value;
+
+            // Display the values in the output div
+            document.getElementById('displayName').textContent = nameValue;
+            document.getElementById('displayAge').textContent = ageValue;
+            document.getElementById('displayHometown').textContent = hometownValue
+            document.getElementById('displayHobby').textContent = hobbyValue
+            document.getElementById('displayMessage').textContent = messageValue
+
+            // Make the output div visible
+            outputDiv.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
